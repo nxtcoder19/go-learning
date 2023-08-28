@@ -21,7 +21,15 @@ func calc2(x int, y int) (sum int, sub int, mul int, div float64) {
 	return sum, sub, mul, div
 }
 
+func addTowNo() {
+	fmt.Println("Add + double two numbers: ",
+		func(a, b int) int {
+			return (a + b) * 2
+		}(10, 2))
+}
+
 func main() {
+	addTowNo()
 	fmt.Println(add(5, 6))
 	fmt.Println(calc(5, 6))
 	fmt.Println(calc2(9, 6))

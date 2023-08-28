@@ -1,0 +1,172 @@
+# [Runes](https://exercism.org/tracks/go/concepts/runes)
+#### [read in detail here](https://www.educative.io/answers/what-is-the-rune-type-in-golang)
+
+    
+    The rune type in Go is an alias for int32.
+    Given this underlying int32 type, the rune type holds a signed 32-bit integer value.
+    However, unlike an int32 type,
+    the integer value stored in a rune type represents a single Unicode character.
+
+    In Go, the rune type represents a single Unicode code point.
+
+    rune in Go is a data type that stores codes that represent Unicode characters.
+    Unicode is actually the collection of all possible characters present in 
+    the whole world. In Unicode, each of these characters is assigned
+    a unique number called the Unicode code point. This code point is what
+    we store in a rune data type.
+
+# Alias
+  
+    Type aliasing refers to the technique of providing an alternate name for an
+    existing type. Type aliasing was introduced in Go version 1.9 and above. 
+    This helps to facilitate code refactor for large codebases.
+    
+# Unicode and Unicode Code Points
+
+    Unicode is a superset of ASCII that represents characters by 
+    assigning a unique number to every character. 
+    This unique number is called a Unicode code point. Unicode aims to represent
+    all the world's characters including various alphabets, numbers, symbols,
+    and even emoji as Unicode code points.
+
+# [utf-8](https://hackthedeveloper.com/golang-utf8-package-text-encoding/)
+    
+    UTF-8 is a variable-width character encoding that is used to encode 
+    every Unicode code point as 1, 2, 3, or 4 bytes.
+    Since a Unicode code point can be encoded as a maximum of 4 bytes,
+    the rune type needs to be able to hold up to 4 bytes of data.
+    That is why the rune type is an alias for int32 as an int32 
+    type is capable of holding up to 4 bytes of data.
+
+    Go source code files are encoded using UTF-8.
+
+# Number Parsing
+
+-   Syntax:
+    `func ParseInt(s string, base int, bitSize int) (i int64, err error)`
+
+-   parameter:
+
+    s: String value to be converted in an integer number.
+
+    base: The base value of the given value. It can range from 0, 2 to 36.
+
+    bitSize: It specifies the integer type, such as, int(0), int8(8), int16(16), int32(32), and int64(64).
+
+- base?
+
+  In the context of number parsing, the "base" refers to the numerical base or radix that is used to interpret the characters in a string as a numeric value. Different bases represent different numbering systems. The most common bases are decimal (base 10), binary (base 2), octal (base 8), and hexadecimal (base 16).
+
+When parsing a number from a string, you need to specify the base to correctly interpret the characters in the string as digits of the desired numeric base. For example:
+
+    Decimal (base 10) uses digits 0-9.
+    Binary (base 2) uses digits 0 and 1.
+    Octal (base 8) uses digits 0-7.
+    Hexadecimal (base 16) uses digits 0-9 and letters A-F (or a-f) to represent values 10-15.
+
+    In Go's strconv package, the base is specified using the second argument in functions like ParseInt and ParseUint. For instance:
+
+    go
+    
+    i, err := strconv.ParseInt("101010", 2, 64) // Parses binary "101010" as base 2
+    
+    In this example, the string "101010" is interpreted as a binary number (base 2) 
+    because the second argument is set to 2.
+    
+    Similarly, if you want to parse a hexadecimal string:
+    
+    go
+    
+    h, err := strconv.ParseInt("1A3F", 16, 64) // Parses hexadecimal "1A3F" as base 16
+    
+    In this example, the string "1A3F" is interpreted as a hexadecimal number 
+    (base 16) because the second argument is set to 16.
+    
+    By specifying the correct base, you ensure that the characters in
+    the string are interpreted correctly to represent the desired numeric value.
+  
+
+# SHA256 hashes
+
+    SHA256 hashes are frequently used to compute short identities for binary
+    or text blobs. For example, TLS/SSL certificates use SHA256 to compute
+    a certificate’s signature. Here’s how to compute SHA256 hashes in Go.
+
+# BASE64
+
+    you can perform Base64 encoding and decoding using the encoding/base64 package.
+    Base64 encoding is commonly used to encode binary data into a text-based format
+    that is safe for transport and storage, such as in emails or URLs. Here's how
+    you can use the encoding/base64 package to perform Base64 encoding and decoding.
+
+# Lines filters
+
+    A line filter is a common type of program that reads input on stdin, 
+    processes it, and then prints some derived result to stdout.
+    grep and sed are common line filters.
+
+    echo "hello" > /tmp/data
+    cat /tmp/data | go run lines-filter.go
+
+# command line arguments & flags
+
+    Command Line Flags (Options):
+    Command line flags, also known as options, are typically preceded by a hyphen 
+    (-) or a double hyphen (--). They provide additional information or modify 
+    the behavior of a command. Flags are often used to enable or disable certain
+    features,set configuration values, or control the output of a program. For example:
+    
+    shell
+    
+    $ ls -l      # Display detailed list of files
+    $ git commit -m "Initial commit"   # Commit with a message
+    $ node script.js --debug           # Run a Node.js script in debug mode
+    
+    Command Line Arguments:
+    Command line arguments are the values provided to a command or program 
+    after the command itself and any flags. They are typically used to specify \
+    the input or data that a program should operate on. Arguments can be filenames,
+    paths, text strings, or any other data required by the program. For example:
+    
+    shell
+    
+    $ cat file.txt             # Display the contents of a file
+    $ python script.py arg1    # Run a Python script with an argument
+    $ node calculator.js 5 3  
+
+# context
+
+    In Go, the context package provides a way to carry deadlines, 
+    cancellation signals, and other request-scoped values across 
+    API boundaries and between processes. The context package is 
+    particularly useful in scenarios such as handling concurrent or distributed 
+    systems, where you need to manage and propagate context information across 
+    various components.
+
+    The context package introduces the Context type, which represents
+    a context for carrying request-scoped values and cancellation signals.
+    A Context value can be used to control the behavior of operations, such
+    as timeouts, cancellations, and passing values between functions without
+    explicitly passing them as function parameters.
+
+# describe below struct:
+
+    type Manager struct {
+    ManagerFirstName   string  `json: "manager_first_name"`
+    ManagerLastName    string  `json: "manager_last_name"`
+    ManagerEmployeeID  string  `json: "manager_employee_id"`
+    ManagerSalary      float64 `json: "manager_salary,omitempty"`
+    }
+
+-   The Manager struct is a data structure in the Go programming language that is likely intended to represent information about a manager. This struct is designed to be compatible with JSON serialization and deserialization, as indicated by the use of struct tags. Here's a breakdown of the fields and their annotations:
+
+-    ManagerFirstName: This field is of type string and is intended to store the first name of the manager. The struct tag json:"manager_first_name" specifies that this field should be encoded as "manager_first_name" in the JSON representation.
+
+-    ManagerLastName: Similar to ManagerFirstName, this field is also of type string and is used to store the last name of the manager. The json:"manager_last_name" tag indicates that this field should be encoded as "manager_last_name" in the JSON representation.
+
+-    ManagerEmployeeID: This field is of type string and is meant to hold the employee ID of the manager. The json:"manager_employee_id" tag ensures that this field is encoded as "manager_employee_id" in the JSON representation.
+
+-    ManagerSalary: This field is of type float64 and appears to represent the salary of the manager. The json:"manager_salary,omitempty" tag has two parts:
+        json:"manager_salary" specifies that this field should be encoded as "manager_salary" in the JSON representation.
+        ,omitempty indicates that if the ManagerSalary field is zero or has a zero value (like 0.0 for a float64), it will be omitted from the JSON output. This can help reduce unnecessary data in the JSON representation.
+        
