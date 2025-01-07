@@ -19,7 +19,7 @@ type response2 struct {
 func main() {
 
 	bolB, _ := json.Marshal(true)
-	fmt.Println(string(bolB))
+	fmt.Println("blob", string(bolB))
 	fmt.Println(bolB)
 
 	intB, _ := json.Marshal(1)
