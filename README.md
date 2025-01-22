@@ -1,3 +1,55 @@
+# Golang
+
+    Golang, often referred to as Go, is an open-source programming language 
+    developed by Google in 2007 and released to the public in 2009. It was created by 
+    Robert Griesemer, Rob Pike, and Ken Thompson to address performance, simplicity, 
+    and scalability issues present in other programming languages.
+    
+    Type: Statically typed, compiled language.
+    Designed For: Concurrent, scalable, and highly efficient applications.
+    Syntax: Clean, concise, and similar to C, but with improved safety and performance features.
+
+# Why Golang
+
+    Golang is widely used for modern software development because of its performance, 
+    simplicity, and ability to handle concurrent programming efficiently. 
+    Here are the key reasons to use Go:
+
+- Compiled to Native Machine Code:
+    Go is compiled to native machine code, which makes it fast and efficient. 
+    This means that Go programs can run faster than equivalent C or C++ programs.
+
+    When a program is compiled to native machine code, it means the source code is translated directly
+    into the binary instructions that the CPU can execute without needing an intermediary 
+    (like a virtual machine or interpreter).
+    This approach ensures that the program runs directly on the hardware with 
+    maximum efficiency, as the instructions are specifically optimized for the 
+    target architecture (e.g., x86, ARM).
+
+- Concurrent Programming:
+    Go is designed to handle concurrent programming efficiently. 
+    It provides built-in support for goroutines, channels, and synchronization primitives.
+
+- Garbage Collection:
+    Go uses a garbage collector to automatically manage memory allocation and deallocation. 
+    This eliminates the need for manual memory management, making Go programs easier to write and maintain.
+
+- Static Typing:
+    Go is a statically typed language, which means that variables have a specific type and cannot be changed 
+    during runtime. This helps catch errors early and improves code reliability.
+
+- Concise Syntax:
+    Go has a clean and concise syntax that is easy to read and write. 
+    It uses a combination of keywords and symbols to express concepts, making it easy to learn and use.
+
+- Standard Library:
+    Go comes with a standard library that provides a wide range of functionality, including networking, 
+    file I/O, and cryptography. This makes it easy to build robust and scalable applications.
+
+- Cross-Platform Compatibility:
+    Go is designed to be cross-platform compatible, which means that Go programs can run on different operating systems 
+    and architectures without modification. This makes it easy to deploy and run Go applications on a wide range of devices.
+
 # [Runes](https://exercism.org/tracks/go/concepts/runes)
 #### [read in detail here](https://www.educative.io/answers/what-is-the-rune-type-in-golang)
 
@@ -169,4 +221,126 @@ When parsing a number from a string, you need to specify the base to correctly i
 -    ManagerSalary: This field is of type float64 and appears to represent the salary of the manager. The json:"manager_salary,omitempty" tag has two parts:
         json:"manager_salary" specifies that this field should be encoded as "manager_salary" in the JSON representation.
         ,omitempty indicates that if the ManagerSalary field is zero or has a zero value (like 0.0 for a float64), it will be omitted from the JSON output. This can help reduce unnecessary data in the JSON representation.
+
+# Go Routines
         
+        Go routines are lightweight threads of execution that allow concurrent execution of functions. 
+        They are useful for performing tasks concurrently, such as handling multiple requests or processing data in parallel.
+        To create a new goroutine, you use the go keyword followed by a function call.
+
+        Go routing, based on goroutines, is Golang’s approach to managing concurrency. 
+        It allows functions to run concurrently, making programs efficient, scalable, 
+        and capable of handling many tasks simultaneously without blocking the main thread.
+
+        Steps in Goroutine Execution
+        Goroutine Creation:
+    
+- When go is used, the Go runtime creates a new goroutine, registers it with the scheduler, and immediately returns control to the calling function.
+        Goroutine Scheduling:
+        
+- The scheduler assigns the goroutine to an available OS thread.
+        If all OS threads are busy, the scheduler queues the goroutine until a thread becomes available.
+        Execution:
+        
+- The goroutine executes independently of other goroutines.
+        The Go scheduler ensures that all active goroutines get time to execute.
+        Termination:
+        
+- When the goroutine completes, the memory and resources it used are reclaimed.
+
+# Channel
+
+- A channel is a typed conduit through which you can send and receive values of a type.
+- The channel type is defined as:
+
+```go
+type ChannelType chan ValueType
+```
+
+    Channels in Golang provide a way to communicate and synchronize between goroutines. 
+    They act as a conduit to pass data from one goroutine to another, ensuring safe 
+    and synchronized communication.
+
+- Channels can be used for broadcasting or sending event notifications.
+- Channels can be used to pass data between goroutines, allowing them to communicate 
+    and synchronize their execution.
+- Channels can be used to implement buffered or unbuffered communication between 
+    goroutines.
+- Channels can be used to implement message passing between goroutines.
+- Timeouts can be used to control the behavior of goroutines that are blocked on 
+    channel operations.
+
+# Unbuffered Communication
+    An unbuffered channel has no capacity to store messages. Communication between the producer (sender) and consumer (receiver) happens synchronously, meaning:
+    
+    The sender blocks until a receiver is ready to consume the message.
+    The receiver blocks until a sender is ready to send a message.
+
+    An unbuffered channel has no capacity to hold messages. 
+    Every send (ch <- value) operation will block until a corresponding receive (<-ch) 
+    operation is ready, regardless of whether the send is inside a loop.
+
+# Buffered Communication
+    A buffered channel has a specified capacity, meaning it can store a limited number of messages. Communication between the sender and receiver happens asynchronously up to the channel's capacity.
+    
+    The sender does not block until the channel is full.
+    The receiver does not block until the channel is empty.
+
+    A buffered channel has capacity to hold messages. In a loop, 
+    the send operation (ch <- value) will not block until the buffer is full. Similarly, 
+    the receive operation (<-ch) will not block until the buffer is empty.
+
+# Variadic Functions
+
+    A variadic function in Go is a function that can accept a variable number of arguments.
+    Variadic functions provide flexibility by allowing you to pass zero, one, or multiple 
+    arguments of the same type to the function.
+
+```
+package main
+
+import "fmt"
+
+func sum(numbers ...int) int {
+	total := 0
+	for _, number := range numbers {
+		total += number
+	}
+	return total
+}
+
+func main() {
+	fmt.Println(sum(1, 2, 3))       // Output: 6
+	fmt.Println(sum(4, 5, 6, 7, 8)) // Output: 30
+	fmt.Println(sum())              // Output: 0 (no arguments passed)
+}
+
+```
+
+# Generic Types
+
+    Generics, introduced in Go 1.18, allow you to write flexible and reusable 
+    functions and types that work with different data types while maintaining type safety. 
+    Generics eliminate the need for duplicating code for different types or using interface{} 
+    (which sacrifices type safety).
+
+```cgo
+package main
+
+import "fmt"
+
+// Generic function with type parameter T
+func printValues[T any](values []T) {
+	for _, v := range values {
+		fmt.Println(v)
+	}
+}
+
+func main() {
+	printValues([]int{1, 2, 3})       // Works with int
+	printValues([]string{"a", "b"})  // Works with string
+	printValues([]float64{1.1, 2.2}) // Works with float64
+}
+
+```
+
