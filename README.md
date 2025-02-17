@@ -271,7 +271,8 @@ type ChannelType chan ValueType
     channel operations.
 
 # Unbuffered Communication
-    An unbuffered channel has no capacity to store messages. Communication between the producer (sender) and consumer (receiver) happens synchronously, meaning:
+    An unbuffered channel has no capacity to store messages. Communication between the producer (sender) and consumer (receiver) 
+    happens synchronously, meaning:
     
     The sender blocks until a receiver is ready to consume the message.
     The receiver blocks until a sender is ready to send a message.
@@ -344,3 +345,40 @@ func main() {
 
 ```
 
+# Type Assertion
+
+Type assertion in Go is a way to retrieve the underlying concrete value from an interface{} type.
+It is used when working with interfaces to extract the actual type stored in the interface.
+
+```bash
+value, ok := interfaceValue.(TargetType)
+
+
+package main
+
+import "fmt"
+
+func main() {
+    var data interface{} = "Hello, Go!"
+
+    str, ok := data.(string) // Type Assertion
+    if ok {
+        fmt.Println("Extracted String:", str)
+    } else {
+        fmt.Println("Type assertion failed")
+    }
+}
+
+```
+
+# Line Filter
+
+A line filter in Go is a program that reads input line-by-line, processes it, 
+and outputs the modified content. It is commonly used in command-line tools to filter, 
+transform, or analyze text-based data.
+
+✅ Example Use Cases:
+- Removing empty lines from a file.
+- Extracting lines containing a specific keyword.
+- Converting text to uppercase/lowercase.
+- Counting occurrences of a word in each line.
