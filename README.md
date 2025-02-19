@@ -382,3 +382,15 @@ transform, or analyze text-based data.
 - Extracting lines containing a specific keyword.
 - Converting text to uppercase/lowercase.
 - Counting occurrences of a word in each line.
+
+# Race Condition
+
+A race condition in Golang occurs when two or more goroutines access the same shared
+resource (such as a variable) concurrently, and at least one of them modifies it,
+leading to unpredictable behavior.
+
+# sync.WaitGroup
+
+The sync.WaitGroup in Golang is used to wait for a group of goroutines to complete their execution.
+It helps in synchronizing multiple goroutines by ensuring that the main goroutine waits until 
+all spawned goroutines have finished their tasks.
