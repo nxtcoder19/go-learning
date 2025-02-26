@@ -394,3 +394,42 @@ leading to unpredictable behavior.
 The sync.WaitGroup in Golang is used to wait for a group of goroutines to complete their execution.
 It helps in synchronizing multiple goroutines by ensuring that the main goroutine waits until 
 all spawned goroutines have finished their tasks.
+
+# Memory Allocation
+
+In Golang, memory allocation and utilization are managed by the runtime through 
+a combination of stack allocation, heap allocation, and garbage collection. 
+
+- stack allocation: 
+    - The stack is used for function calls and local variables with a known size at compile time.
+    - It follows a Last-In-First-Out (LIFO) approach, making it efficient for function execution.
+    - Stack allocation is automatic and happens automatically when a function is called.Variables allocated on the stack are automatically deallocated when the function returns.
+
+    ```bash
+    func main() {
+        c := a + b  // 'c' is stored in the stack
+    return c
+
+     }
+  ```
+
+
+- heap allocation:
+    - The heap is used for dynamic memory allocation, where memory is allocated and deallocated dynamically at runtime.
+    - If a variable escapes the function scope (e.g., returned from a function or assigned to a pointer), it gets allocated on the heap.
+
+
+    ```bash
+    func newPerson(name string) *string {
+         p := name  // Heap allocation because it escapes the function scope
+    return &p
+
+     }
+    ```
+
+- garbage collection:
+    - The garbage collector is responsible for managing the memory allocated on the heap.
+    - It periodically scans the heap and identifies objects that are no longer reachable.
+    - When an unreachable object is found, it is marked as garbage and can be deallocated.
+    - GC runs in the background and pauses the program briefly to reclaim memory.
+
