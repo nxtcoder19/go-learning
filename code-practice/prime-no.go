@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func wisPrime(n int) bool {
+func isPrime(n int) bool {
 	if n <= 1 {
 		return false
 	}

@@ -11,7 +11,7 @@ func removeDuplicates(arr []int) []int {
 			arrMap[v] = true
 			newArr = append(newArr, v)
 		}
-	}ww
+	}
 	return newArr
 }
 
