@@ -419,7 +419,7 @@ a combination of stack allocation, heap allocation, and garbage collection.
     - If a variable escapes the function scope (e.g., returned from a function or assigned to a pointer), it gets allocated on the heap.
 
 
-    ```bash
+    ```b[PANCard.pdf](..%2F..%2F..%2F..%2FDownloads%2FPANCard.pdf)ash
     func newPerson(name string) *string {
          p := name  // Heap allocation because it escapes the function scope
     return &p
