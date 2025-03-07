@@ -433,3 +433,13 @@ a combination of stack allocation, heap allocation, and garbage collection.
     - When an unreachable object is found, it is marked as garbage and can be deallocated.
     - GC runs in the background and pauses the program briefly to reclaim memory.
 
+# Status code
+
+200	http.StatusOK	Success
+201	http.StatusCreated	Resource created
+400	http.StatusBadRequest	Bad request
+401	http.StatusUnauthorized	Unauthorized
+403	http.StatusForbidden	Forbidden
+404	http.StatusNotFound	Not found
+500	http.StatusInternalServerError	Internal server error
+
