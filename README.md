@@ -1,19 +1,19 @@
 # Golang
 
-    Golang, often referred to as Go, is an open-source programming language 
-    developed by Google in 2007 and released to the public in 2009. It was created by 
-    Robert Griesemer, Rob Pike, and Ken Thompson to address performance, simplicity, 
-    and scalability issues present in other programming languages.
-    
-    Type: Statically typed, compiled language.
-    Designed For: Concurrent, scalable, and highly efficient applications.
-    Syntax: Clean, concise, and similar to C, but with improved safety and performance features.
+Golang, often referred to as Go, is an open-source programming language 
+developed by Google in 2007 and released to the public in 2009. It was created by 
+Robert Griesemer, Rob Pike, and Ken Thompson to address performance, simplicity, 
+and scalability issues present in other programming languages.
+
+Type: Statically typed, compiled language.
+Designed For: Concurrent, scalable, and highly efficient applications.
+Syntax: Clean, concise, and similar to C, but with improved safety and performance features.
 
 # Why Golang
 
-    Golang is widely used for modern software development because of its performance, 
-    simplicity, and ability to handle concurrent programming efficiently. 
-    Here are the key reasons to use Go:
+Golang is widely used for modern software development because of its performance, 
+simplicity, and ability to handle concurrent programming efficiently. 
+Here are the key reasons to use Go:
 
 - Compiled to Native Machine Code:
     Go is compiled to native machine code, which makes it fast and efficient. 
@@ -54,43 +54,43 @@
 #### [read in detail here](https://www.educative.io/answers/what-is-the-rune-type-in-golang)
 
     
-    The rune type in Go is an alias for int32.
-    Given this underlying int32 type, the rune type holds a signed 32-bit integer value.
-    However, unlike an int32 type,
-    the integer value stored in a rune type represents a single Unicode character.
+The rune type in Go is an alias for int32.
+Given this underlying int32 type, the rune type holds a signed 32-bit integer value.
+However, unlike an int32 type,
+the integer value stored in a rune type represents a single Unicode character.
 
-    In Go, the rune type represents a single Unicode code point.
+In Go, the rune type represents a single Unicode code point.
 
-    rune in Go is a data type that stores codes that represent Unicode characters.
-    Unicode is actually the collection of all possible characters present in 
-    the whole world. In Unicode, each of these characters is assigned
-    a unique number called the Unicode code point. This code point is what
-    we store in a rune data type.
+rune in Go is a data type that stores codes that represent Unicode characters.
+Unicode is actually the collection of all possible characters present in 
+the whole world. In Unicode, each of these characters is assigned
+a unique number called the Unicode code point. This code point is what
+we store in a rune data type.
 
 # Alias
   
-    Type aliasing refers to the technique of providing an alternate name for an
-    existing type. Type aliasing was introduced in Go version 1.9 and above. 
-    This helps to facilitate code refactor for large codebases.
+Type aliasing refers to the technique of providing an alternate name for an
+existing type. Type aliasing was introduced in Go version 1.9 and above. 
+This helps to facilitate code refactor for large codebases.
     
 # Unicode and Unicode Code Points
 
-    Unicode is a superset of ASCII that represents characters by 
-    assigning a unique number to every character. 
-    This unique number is called a Unicode code point. Unicode aims to represent
-    all the world's characters including various alphabets, numbers, symbols,
-    and even emoji as Unicode code points.
+Unicode is a superset of ASCII that represents characters by 
+assigning a unique number to every character. 
+This unique number is called a Unicode code point. Unicode aims to represent
+all the world's characters including various alphabets, numbers, symbols,
+and even emoji as Unicode code points.
 
 # [utf-8](https://hackthedeveloper.com/golang-utf8-package-text-encoding/)
     
-    UTF-8 is a variable-width character encoding that is used to encode 
-    every Unicode code point as 1, 2, 3, or 4 bytes.
-    Since a Unicode code point can be encoded as a maximum of 4 bytes,
-    the rune type needs to be able to hold up to 4 bytes of data.
-    That is why the rune type is an alias for int32 as an int32 
-    type is capable of holding up to 4 bytes of data.
+UTF-8 is a variable-width character encoding that is used to encode 
+every Unicode code point as 1, 2, 3, or 4 bytes.
+Since a Unicode code point can be encoded as a maximum of 4 bytes,
+the rune type needs to be able to hold up to 4 bytes of data.
+That is why the rune type is an alias for int32 as an int32 
+type is capable of holding up to 4 bytes of data.
 
-    Go source code files are encoded using UTF-8.
+Go source code files are encoded using UTF-8.
 
 # Number Parsing
 
@@ -111,95 +111,95 @@
 
 When parsing a number from a string, you need to specify the base to correctly interpret the characters in the string as digits of the desired numeric base. For example:
 
-    Decimal (base 10) uses digits 0-9.
-    Binary (base 2) uses digits 0 and 1.
-    Octal (base 8) uses digits 0-7.
-    Hexadecimal (base 16) uses digits 0-9 and letters A-F (or a-f) to represent values 10-15.
+Decimal (base 10) uses digits 0-9.
+Binary (base 2) uses digits 0 and 1.
+Octal (base 8) uses digits 0-7.
+Hexadecimal (base 16) uses digits 0-9 and letters A-F (or a-f) to represent values 10-15.
 
-    In Go's strconv package, the base is specified using the second argument in functions like ParseInt and ParseUint. For instance:
+In Go's strconv package, the base is specified using the second argument in functions like ParseInt and ParseUint. For instance:
 
-    go
-    
-    i, err := strconv.ParseInt("101010", 2, 64) // Parses binary "101010" as base 2
-    
-    In this example, the string "101010" is interpreted as a binary number (base 2) 
-    because the second argument is set to 2.
-    
-    Similarly, if you want to parse a hexadecimal string:
-    
-    go
-    
-    h, err := strconv.ParseInt("1A3F", 16, 64) // Parses hexadecimal "1A3F" as base 16
-    
-    In this example, the string "1A3F" is interpreted as a hexadecimal number 
-    (base 16) because the second argument is set to 16.
-    
-    By specifying the correct base, you ensure that the characters in
-    the string are interpreted correctly to represent the desired numeric value.
+go
+
+i, err := strconv.ParseInt("101010", 2, 64) // Parses binary "101010" as base 2
+
+In this example, the string "101010" is interpreted as a binary number (base 2) 
+because the second argument is set to 2.
+
+Similarly, if you want to parse a hexadecimal string:
+
+go
+
+h, err := strconv.ParseInt("1A3F", 16, 64) // Parses hexadecimal "1A3F" as base 16
+
+In this example, the string "1A3F" is interpreted as a hexadecimal number 
+(base 16) because the second argument is set to 16.
+
+By specifying the correct base, you ensure that the characters in
+the string are interpreted correctly to represent the desired numeric value.
   
 
 # SHA256 hashes
 
-    SHA256 hashes are frequently used to compute short identities for binary
-    or text blobs. For example, TLS/SSL certificates use SHA256 to compute
-    a certificate’s signature. Here’s how to compute SHA256 hashes in Go.
+SHA256 hashes are frequently used to compute short identities for binary
+or text blobs. For example, TLS/SSL certificates use SHA256 to compute
+a certificate’s signature. Here’s how to compute SHA256 hashes in Go.
 
 # BASE64
 
-    you can perform Base64 encoding and decoding using the encoding/base64 package.
-    Base64 encoding is commonly used to encode binary data into a text-based format
-    that is safe for transport and storage, such as in emails or URLs. Here's how
-    you can use the encoding/base64 package to perform Base64 encoding and decoding.
+you can perform Base64 encoding and decoding using the encoding/base64 package.
+Base64 encoding is commonly used to encode binary data into a text-based format
+that is safe for transport and storage, such as in emails or URLs. Here's how
+you can use the encoding/base64 package to perform Base64 encoding and decoding.
 
 # Lines filters
 
-    A line filter is a common type of program that reads input on stdin, 
-    processes it, and then prints some derived result to stdout.
-    grep and sed are common line filters.
+A line filter is a common type of program that reads input on stdin, 
+processes it, and then prints some derived result to stdout.
+grep and sed are common line filters.
 
-    echo "hello" > /tmp/data
-    cat /tmp/data | go run lines-filter.go
+echo "hello" > /tmp/data
+cat /tmp/data | go run lines-filter.go
 
 # command line arguments & flags
 
-    Command Line Flags (Options):
-    Command line flags, also known as options, are typically preceded by a hyphen 
-    (-) or a double hyphen (--). They provide additional information or modify 
-    the behavior of a command. Flags are often used to enable or disable certain
-    features,set configuration values, or control the output of a program. For example:
-    
-    shell
-    
-    $ ls -l      # Display detailed list of files
-    $ git commit -m "Initial commit"   # Commit with a message
-    $ node script.js --debug           # Run a Node.js script in debug mode
-    
-    Command Line Arguments:
-    Command line arguments are the values provided to a command or program 
-    after the command itself and any flags. They are typically used to specify \
-    the input or data that a program should operate on. Arguments can be filenames,
-    paths, text strings, or any other data required by the program. For example:
-    
-    shell
-    
-    $ cat file.txt             # Display the contents of a file
-    $ python script.py arg1    # Run a Python script with an argument
-    $ node calculator.js 5 3  
+Command Line Flags (Options):
+Command line flags, also known as options, are typically preceded by a hyphen 
+(-) or a double hyphen (--). They provide additional information or modify 
+the behavior of a command. Flags are often used to enable or disable certain
+features,set configuration values, or control the output of a program. For example:
+
+shell
+
+$ ls -l      # Display detailed list of files
+$ git commit -m "Initial commit"   # Commit with a message
+$ node script.js --debug           # Run a Node.js script in debug mode
+
+Command Line Arguments:
+Command line arguments are the values provided to a command or program 
+after the command itself and any flags. They are typically used to specify \
+the input or data that a program should operate on. Arguments can be filenames,
+paths, text strings, or any other data required by the program. For example:
+
+shell
+
+$ cat file.txt             # Display the contents of a file
+$ python script.py arg1    # Run a Python script with an argument
+$ node calculator.js 5 3  
 
 # context
 
-    In Go, the context package provides a way to carry deadlines, 
-    cancellation signals, and other request-scoped values across 
-    API boundaries and between processes. The context package is 
-    particularly useful in scenarios such as handling concurrent or distributed 
-    systems, where you need to manage and propagate context information across 
-    various components.
+In Go, the context package provides a way to carry deadlines, 
+cancellation signals, and other request-scoped values across 
+API boundaries and between processes. The context package is 
+particularly useful in scenarios such as handling concurrent or distributed 
+systems, where you need to manage and propagate context information across 
+various components.
 
-    The context package introduces the Context type, which represents
-    a context for carrying request-scoped values and cancellation signals.
-    A Context value can be used to control the behavior of operations, such
-    as timeouts, cancellations, and passing values between functions without
-    explicitly passing them as function parameters.
+The context package introduces the Context type, which represents
+a context for carrying request-scoped values and cancellation signals.
+A Context value can be used to control the behavior of operations, such
+as timeouts, cancellations, and passing values between functions without
+explicitly passing them as function parameters.
 
 # describe below struct:
 
@@ -224,16 +224,16 @@ When parsing a number from a string, you need to specify the base to correctly i
 
 # Go Routines
         
-        Go routines are lightweight threads of execution that allow concurrent execution of functions. 
-        They are useful for performing tasks concurrently, such as handling multiple requests or processing data in parallel.
-        To create a new goroutine, you use the go keyword followed by a function call.
+Go routines are lightweight threads of execution that allow concurrent execution of functions. 
+They are useful for performing tasks concurrently, such as handling multiple requests or processing data in parallel.
+To create a new goroutine, you use the go keyword followed by a function call.
 
-        Go routing, based on goroutines, is Golang’s approach to managing concurrency. 
-        It allows functions to run concurrently, making programs efficient, scalable, 
-        and capable of handling many tasks simultaneously without blocking the main thread.
+Go routing, based on goroutines, is Golang’s approach to managing concurrency. 
+It allows functions to run concurrently, making programs efficient, scalable, 
+and capable of handling many tasks simultaneously without blocking the main thread.
 
-        Steps in Goroutine Execution
-        Goroutine Creation:
+Steps in Goroutine Execution
+Goroutine Creation:
     
 - When go is used, the Go runtime creates a new goroutine, registers it with the scheduler, and immediately returns control to the calling function.
         Goroutine Scheduling:
@@ -271,31 +271,31 @@ type ChannelType chan ValueType
     channel operations.
 
 # Unbuffered Communication
-    An unbuffered channel has no capacity to store messages. Communication between the producer (sender) and consumer (receiver) 
-    happens synchronously, meaning:
-    
-    The sender blocks until a receiver is ready to consume the message.
-    The receiver blocks until a sender is ready to send a message.
+An unbuffered channel has no capacity to store messages. Communication between the producer (sender) and consumer (receiver) 
+happens synchronously, meaning:
 
-    An unbuffered channel has no capacity to hold messages. 
-    Every send (ch <- value) operation will block until a corresponding receive (<-ch) 
-    operation is ready, regardless of whether the send is inside a loop.
+The sender blocks until a receiver is ready to consume the message.
+The receiver blocks until a sender is ready to send a message.
+
+An unbuffered channel has no capacity to hold messages. 
+Every send (ch <- value) operation will block until a corresponding receive (<-ch) 
+operation is ready, regardless of whether the send is inside a loop.
 
 # Buffered Communication
-    A buffered channel has a specified capacity, meaning it can store a limited number of messages. Communication between the sender and receiver happens asynchronously up to the channel's capacity.
-    
-    The sender does not block until the channel is full.
-    The receiver does not block until the channel is empty.
+A buffered channel has a specified capacity, meaning it can store a limited number of messages. Communication between the sender and receiver happens asynchronously up to the channel's capacity.
 
-    A buffered channel has capacity to hold messages. In a loop, 
-    the send operation (ch <- value) will not block until the buffer is full. Similarly, 
-    the receive operation (<-ch) will not block until the buffer is empty.
+The sender does not block until the channel is full.
+The receiver does not block until the channel is empty.
+
+A buffered channel has capacity to hold messages. In a loop, 
+the send operation (ch <- value) will not block until the buffer is full. Similarly, 
+the receive operation (<-ch) will not block until the buffer is empty.
 
 # Variadic Functions
 
-    A variadic function in Go is a function that can accept a variable number of arguments.
-    Variadic functions provide flexibility by allowing you to pass zero, one, or multiple 
-    arguments of the same type to the function.
+A variadic function in Go is a function that can accept a variable number of arguments.
+Variadic functions provide flexibility by allowing you to pass zero, one, or multiple 
+arguments of the same type to the function.
 
 ```
 package main
@@ -320,10 +320,10 @@ func main() {
 
 # Generic Types
 
-    Generics, introduced in Go 1.18, allow you to write flexible and reusable 
-    functions and types that work with different data types while maintaining type safety. 
-    Generics eliminate the need for duplicating code for different types or using interface{} 
-    (which sacrifices type safety).
+Generics, introduced in Go 1.18, allow you to write flexible and reusable 
+functions and types that work with different data types while maintaining type safety. 
+Generics eliminate the need for duplicating code for different types or using interface{} 
+(which sacrifices type safety).
 
 ```cgo
 package main
