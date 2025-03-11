@@ -435,11 +435,11 @@ a combination of stack allocation, heap allocation, and garbage collection.
 
 # Status code
 
-200	http.StatusOK	Success
-201	http.StatusCreated	Resource created
-400	http.StatusBadRequest	Bad request
-401	http.StatusUnauthorized	Unauthorized
-403	http.StatusForbidden	Forbidden
-404	http.StatusNotFound	Not found
-500	http.StatusInternalServerError	Internal server error
+-   200	http.StatusOK	Success
+-   201	http.StatusCreated	Resource created
+-   400	http.StatusBadRequest	Bad request
+-   401	http.StatusUnauthorized	Unauthorized
+-   403	http.StatusForbidden	Forbidden
+-   404	http.StatusNotFound	Not found
+-   500	http.StatusInternalServerError	Internal server error
 
