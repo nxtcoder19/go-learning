@@ -443,3 +443,85 @@ a combination of stack allocation, heap allocation, and garbage collection.
 -   404	http.StatusNotFound	Not found
 -   500	http.StatusInternalServerError	Internal server error
 
+#  Login
+
+SignUp:
+
+```bash
+func (d *domainI) SignUp(ctx context.Context, name string, email string, password string, captchaToken string) (*common.AuthSession, error) {
+
+	if d.envVars.GoogleRecaptchaEnabled {
+		isValidCaptcha, err := d.verifyCaptcha(ctx, captchaToken)
+		if err != nil {
+			return nil, errors.Newf("failed to verify CAPTCHA: %v", err)
+		}
+
+		if !isValidCaptcha {
+			return nil, errors.New("CAPTCHA verification failed")
+		}
+	}
+
+	matched, err := d.userRepo.FindOne(ctx, repos.Filter{"email": email})
+	if err != nil {
+		if matched != nil {
+			return nil, errors.NewE(err)
+		}
+	}
+
+	if matched != nil && matched.Email == email {
+		return nil, errors.Newf("user(email=%q) already exists", email)
+	}
+
+	salt := generateId("salt")
+	sum := md5.Sum([]byte(password + salt))
+	user, err := d.userRepo.Create(
+		ctx, &entities.User{
+			Name:         name,
+			Email:        email,
+			Password:     hex.EncodeToString(sum[:]),
+			Verified:     !d.envVars.UserEmailVerifactionEnabled,
+			Approved:     false,
+			Metadata:     nil,
+			Joined:       time.Now(),
+			PasswordSalt: salt,
+		},
+	)
+	if err != nil {
+		return nil, errors.NewE(err)
+	}
+
+	if d.envVars.UserEmailVerifactionEnabled {
+		err = d.generateAndSendVerificationToken(ctx, user)
+		if err != nil {
+			return nil, errors.NewE(err)
+		}
+	}
+
+	return newAuthSession(user.Id, user.Email, user.Name, user.Verified, "email/password"), nil
+}
+```
+
+Login:
+
+```bash
+
+func (d *domainI) Login(ctx context.Context, email string, password string) (*common.AuthSession, error) {
+	user, err := d.userRepo.FindOne(ctx, repos.Filter{"email": email})
+	if err != nil {
+		return nil, errors.NewE(err)
+	}
+
+	if user == nil {
+		d.logger.Warnf("user not found for email=%s", email)
+		return nil, errors.Newf("not valid credentials")
+	}
+
+	bytes := md5.Sum([]byte(password + user.PasswordSalt))
+	// TODO (nxtcoder17): use crypto/subtle to compare hashes, to avoid timing attacks, also does not work now
+	if user.Password != hex.EncodeToString(bytes[:]) {
+		return nil, errors.New("not valid credentials")
+	}
+	session := newAuthSession(user.Id, user.Email, user.Name, user.Verified, "email/password")
+	return session, nil
+}
+```
