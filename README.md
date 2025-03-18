@@ -443,6 +443,34 @@ a combination of stack allocation, heap allocation, and garbage collection.
 -   404	http.StatusNotFound	Not found
 -   500	http.StatusInternalServerError	Internal server error
 
+# Functions
+
+- Standalone blocks of code that are not associated with any type.
+- Functions are defined using the `func` keyword.
+- Can be called independently.
+
+    ```bash
+    func Add(a int, b int) int {
+        return a + b
+    }
+
+    ```
+
+# Methods
+
+- Methods are functions that are associated with a specific type(can be struct or any user-defined type).
+- Declared with a receiver (value or pointer) between the func keyword and the method name.
+- Can be called on an instance of that type.
+
+    ```bash
+    type Calculator struct{}
+
+    func (c Calculator) Add(a int, b int) int {
+        return a + b
+    }
+
+    ```
+
 #  Login
 
 SignUp:

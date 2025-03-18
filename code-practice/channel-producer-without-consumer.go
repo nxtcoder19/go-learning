@@ -32,6 +32,7 @@ func main() {
 
 // import (
 // 	"fmt"
+// 	"time"
 // )
 
 // func produce(ch chan int) {
@@ -48,5 +49,8 @@ func main() {
 // 	go produce(ch) // Start producer
 
 // 	// No consumer, so producer will block indefinitely
-// 	select {} // Block main function indefinitely (deadlock)
+// 	// select {} // Block main function indefinitely (deadlock)
+
+// 	time.Sleep(4 * time.Second)
+// 	fmt.Println("All tasks completed")
 // }
