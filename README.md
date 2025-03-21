@@ -50,6 +50,49 @@ Here are the key reasons to use Go:
     Go is designed to be cross-platform compatible, which means that Go programs can run on different operating systems 
     and architectures without modification. This makes it easy to deploy and run Go applications on a wide range of devices.
 
+# Init function
+
+In Go (Golang), the init function is a special function that gets executed automatically before the main function and is typically used to perform initialization tasks.
+
+- Each package can have multiple init functions, even in the same file.
+- The init functions run after all global variables are initialized, but before main() is called.
+
+    ```bash
+    package main
+
+    import "fmt"
+
+    var message string
+
+    func init() {
+        fmt.Println("init function called")
+        message = "Hello from init"
+    }
+
+    func main() {
+        fmt.Println("main function called")
+        fmt.Println(message)
+    }
+
+    output:
+    init function called
+    main function called
+    Hello from init
+
+
+    ```
+
+# Empty Import
+
+An empty import (also called blank identifier import) in Go is when you import a package with an underscore _ instead of assigning it a name or using it directly.
+
+It imports the package solely for its side effects, specifically to execute the package’s init() functions, without directly using any exported identifiers (functions, types, etc.) from that package.
+
+- Registering drivers or plugins (common in database/sql, image processing, etc.)
+- Running initialization code from the imported package.
+- Avoiding "imported and not used" compile-time error when you just want side effects.
+
+
 # [Runes](https://exercism.org/tracks/go/concepts/runes)
 #### [read in detail here](https://www.educative.io/answers/what-is-the-rune-type-in-golang)
 
