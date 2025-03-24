@@ -514,6 +514,74 @@ a combination of stack allocation, heap allocation, and garbage collection.
 
     ```
 
+# Anonymous Functions
+
+- Anonymous functions are functions that do not have a name.
+- They are declared using the `func` keyword followed by the function parameters and return type.
+
+    ```bash
+        func main() {
+        // Anonymous function assigned to a variable
+        add := func(a, b int) int {
+            return a + b
+        }
+
+        result := add(3, 4)
+        fmt.Println("Sum:", result) // Output: Sum: 7
+    }
+
+        func main() {
+        result := func(a, b int) int {
+            return a * b
+        }(5, 6)
+
+        fmt.Println("Product:", result) // Output: Product: 30
+    }
+    ```
+
+
+# Closures
+
+A closure in Go is a function that captures variables from its surrounding scope and can use or modify them, even after the outer function has finished.
+
+- Closures are functions that can access variables from their outer scope.
+- They are created when a function is defined inside another function.
+
+    ```bash
+        func main() {
+        x := 10
+
+        closureFunc := func() {
+            x++
+            fmt.Println("x =", x)
+        }
+
+        closureFunc() // x = 11
+        closureFunc() // x = 12
+    }
+    <!-- The anonymous function "remembers" x and modifies it each time it's called. -->
+
+    <!-- Closure with return type: … -->
+
+    func counter() func() int {
+        count := 0
+        return func() int {
+            count++
+            return count
+        }
+    }
+
+    func main() {
+        incr := counter()
+
+        fmt.Println(incr()) // 1
+        fmt.Println(incr()) // 2
+        fmt.Println(incr()) // 3
+    }
+
+
+    ```
+
 #  Login
 
 SignUp:
