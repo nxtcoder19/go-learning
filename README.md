@@ -92,6 +92,61 @@ It imports the package solely for its side effects, specifically to execute the 
 - Running initialization code from the imported package.
 - Avoiding "imported and not used" compile-time error when you just want side effects.
 
+# Zero value
+
+In Go (Golang), the zero value is the default value a variable holds when it is declared without an explicit initial value. Every type in Go has a zero value, and it depends on the type.
+
+    ```bash
+    package main
+
+    import "fmt"
+
+    func main() {
+        var a int
+        var b string
+        var c bool
+        var d []int
+        var e map[string]int
+        var f *int
+
+        fmt.Println("int:", a)     // 0
+        fmt.Println("string:", b)  // ""
+        fmt.Println("bool:", c)    // false
+        fmt.Println("slice:", d)   // []
+        fmt.Println("map:", e)     // map[]
+        fmt.Println("pointer:", f) // nil
+    }
+
+    ```
+
+# recovery
+
+In Go, recover() is used to handle panics gracefully and prevent your program from crashing.
+
+- recover() is a built-in function in Go that allows you to handle panics.
+- panic() is used when something goes unexpectedly wrong (like an unrecoverable error).
+- recover() only works inside a deferred function.
+
+    ```bash
+    func mayPanic() {
+    panic("something went wrong")
+    }
+
+    func safeFunction() {
+        defer func() {
+            if r := recover(); r != nil {
+                fmt.Println("Recovered from panic:", r)
+            }
+        }()
+        
+        mayPanic()
+        fmt.Println("This line will not run if panic is not recovered")
+    }
+
+
+    ```
+
+
 
 # [Runes](https://exercism.org/tracks/go/concepts/runes)
 #### [read in detail here](https://www.educative.io/answers/what-is-the-rune-type-in-golang)
