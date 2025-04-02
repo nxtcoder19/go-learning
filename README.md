@@ -260,29 +260,79 @@ cat /tmp/data | go run lines-filter.go
 
 # command line arguments & flags
 
-Command Line Flags (Options):
-Command line flags, also known as options, are typically preceded by a hyphen 
-(-) or a double hyphen (--). They provide additional information or modify 
-the behavior of a command. Flags are often used to enable or disable certain
-features,set configuration values, or control the output of a program. For example:
+## Command Line Flags (Options):
+    Command line flags, also known as options, are typically preceded by a hyphen 
+    (-) or a double hyphen (--). They provide additional information or modify 
+    the behavior of a command. Flags are often used to enable or disable certain
+    features,set configuration values, or control the output of a program. For example:
 
-shell
+    shell
 
-$ ls -l      # Display detailed list of files
-$ git commit -m "Initial commit"   # Commit with a message
-$ node script.js --debug           # Run a Node.js script in debug mode
+    $ ls -l      # Display detailed list of files
+    $ git commit -m "Initial commit"   # Commit with a message
+    $ node script.js --debug           # Run a Node.js script in debug mode
 
-Command Line Arguments:
-Command line arguments are the values provided to a command or program 
-after the command itself and any flags. They are typically used to specify \
-the input or data that a program should operate on. Arguments can be filenames,
-paths, text strings, or any other data required by the program. For example:
+    ```bash
+        package main
 
-shell
+        import (
+            "flag"
+            "fmt"
+        )
 
-$ cat file.txt             # Display the contents of a file
-$ python script.py arg1    # Run a Python script with an argument
-$ node calculator.js 5 3  
+        func main() {
+            // Define flags
+            name := flag.String("name", "world", "a name to say hello to")
+            age := flag.Int("age", 30, "your age")
+            debug := flag.Bool("debug", false, "enable debug mode")
+
+            // Parse the flags
+            flag.Parse()
+
+            // Use the values
+            fmt.Printf("Hello, %s! You are %d years old.\n", *name, *age)
+            if *debug {
+                fmt.Println("Debug mode is ON.")
+            }
+
+            // Remaining arguments after flags
+            fmt.Println("Remaining args:", flag.Args())
+        }
+
+        # go run main.go -name=John -age=25 -debug
+
+    ```
+
+## Command Line Arguments:
+    Command line arguments are the values provided to a command or program 
+    after the command itself and any flags. They are typically used to specify \
+    the input or data that a program should operate on. Arguments can be filenames,
+    paths, text strings, or any other data required by the program. For example:
+
+    shell
+
+    $ cat file.txt             # Display the contents of a file
+    $ python script.py arg1    # Run a Python script with an argument
+    $ node calculator.js 5 3  
+
+    ```bash
+    package main
+
+    import (
+        "fmt"
+        "os"
+    )
+
+    func main() {
+        args := os.Args
+        fmt.Println("All args:", args)
+
+        if len(args) > 1 {
+            fmt.Println("First arg:", args[1])
+        }
+    }
+
+    ```
 
 # context
 
