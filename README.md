@@ -687,6 +687,61 @@ A closure in Go is a function that captures variables from its surrounding scope
 
     ```
 
+#  Typecheck Runtime
+
+- Using reflect.TypeOf()
+
+    ```bash
+        package main
+
+    import (
+        "fmt"
+        "reflect"
+    )
+
+    func main() {
+        var x interface{}
+
+        x = 42
+        fmt.Println("Type of x:", reflect.TypeOf(x)) // int
+
+        x = "hello"
+        fmt.Println("Type of x:", reflect.TypeOf(x)) // string
+
+        x = true
+        fmt.Println("Type of x:", reflect.TypeOf(x)) // bool
+    }
+
+    ```
+
+- Using Type Switch
+
+    ```bash
+        package main
+
+        import "fmt"
+
+        func printType(v interface{}) {
+            switch val := v.(type) {
+            case int:
+                fmt.Println("Type is int:", val)
+            case string:
+                fmt.Println("Type is string:", val)
+            case bool:
+                fmt.Println("Type is bool:", val)
+            default:
+                fmt.Println("Unknown type")
+            }
+        }
+
+        func main() {
+            printType(123)
+            printType("hello")
+            printType(true)
+        }
+
+    ```
+
 #  Login
 
 SignUp:
