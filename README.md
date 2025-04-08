@@ -119,6 +119,55 @@ In Go (Golang), the zero value is the default value a variable holds when it is 
 
     ```
 
+# 🔹 Array and Slice
+arrays and slices are both used to store sequences of elements, but they have key differences in terms of flexibility, memory allocation, and behavior.
+
+-   🔹 Array
+    -   An array is a fixed-size collection of elements of the same type.
+    -   The size of an array is determined at compile time and cannot be changed.
+    -   Cannot resize: You can't append to an array.
+    -   Accessing an element outside the bounds of the array will result in a runtime error.
+
+-   🔹 Slice
+    -   Dynamic size: Built on top of arrays, but can grow or shrink.
+    -   Can be resized: You can append to a slice.
+    -   Accessing an element outside the bounds of the slice will not result in a runtime error.
+    -   Slices are more flexible than arrays, as they can be resized.
+    -   A pointer to the underlying array
+    -   A length (number of elements)
+    -   A capacity (max before realloc)
+
+    ```bash
+            package main
+
+                import "fmt"
+
+                func main() {
+                    // Underlying array of 5 elements
+                    arr := [5]int{10, 20, 30, 40, 50}
+
+                    // Create a slice from index 1 to 3 (not including 4)
+                    slice := arr[1:4] // This gives: [20, 30, 40]
+
+                    fmt.Println("Slice:", slice)
+                    fmt.Println("Length:", len(slice))     // 3
+                    fmt.Println("Capacity:", cap(slice))   // 4 (from index 1 to end of array)
+
+                    // Modifying the slice affects the underlying array
+                    slice[0] = 99
+                    fmt.Println("Modified slice:", slice)
+                    fmt.Println("Underlying array:", arr)
+                }
+
+                Output:
+                Slice: [20 30 40]
+                Length: 3
+                Capacity: 4
+                Modified slice: [99 30 40]
+                Underlying array: [10 99 30 40 50]
+
+    ```
+
 # recovery
 
 In Go, recover() is used to handle panics gracefully and prevent your program from crashing.
