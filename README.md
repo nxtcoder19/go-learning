@@ -445,6 +445,37 @@ Goroutine Creation:
         
 - When the goroutine completes, the memory and resources it used are reclaimed.
 
+# Concurrency vs Parallelism
+Concurrency is the ability of a program to execute multiple tasks simultaneously, while parallelism is the ability to execute multiple tasks in parallel.
+
+- ## 🔄 Concurrency
+    - Definition: Doing many things at once (not necessarily simultaneously), by switching between tasks.
+    - Example in Go: Using goroutines to handle multiple tasks concurrently.
+    - Goal: Structure a program to deal with many tasks at once (e.g., handling many requests).
+    - CPU Cores: Can work on a single core by context switching.
+        ```bash
+            go task1()
+            go task2()
+            // Tasks run concurrently, but maybe not in parallel
+        ```
+
+- ## 🧩 Parallelism
+    - Definition: Doing many things at the same time, simultaneously on multiple cores.
+    - Example in Go: Running multiple goroutines that get scheduled on multiple OS threads/cores.
+    - Goal: Speed up execution by splitting tasks across cores.
+    - CPU Cores: Requires multiple cores.
+        ```bash
+            runtime.GOMAXPROCS(2) // Use 2 cores
+            go task1()
+            go task2()
+            // Now goroutines can run in true parallel
+        ```
+
+- ## 🧵 Thread? 
+A thread is the smallest unit of execution in a process. Think of it like a lightweight subprocess that can run code.
+
+Go doesn’t expose threads directly to you. Instead, you use goroutines (which are even lighter than threads).
+
 # Channel
 
 - A channel is a typed conduit through which you can send and receive values of a type.
