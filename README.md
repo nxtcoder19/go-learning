@@ -445,6 +445,8 @@ Goroutine Creation:
         
 - When the goroutine completes, the memory and resources it used are reclaimed.
 
+- EX: When we are multiple people writing on same page with independent data.
+
 # Concurrency vs Parallelism
 Concurrency is the ability of a program to execute multiple tasks simultaneously, while parallelism is the ability to execute multiple tasks in parallel.
 
