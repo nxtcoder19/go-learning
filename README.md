@@ -642,6 +642,8 @@ The sync.WaitGroup in Golang is used to wait for a group of goroutines to comple
 It helps in synchronizing multiple goroutines by ensuring that the main goroutine waits until 
 all spawned goroutines have finished their tasks.
 
+Ex: parrent will not complete their food till their chile completed
+
 # Memory Allocation
 
 In Golang, memory allocation and utilization are managed by the runtime through 
