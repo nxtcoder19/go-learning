@@ -451,7 +451,7 @@ Goroutine Creation:
         
 - When the goroutine completes, the memory and resources it used are reclaimed.
 
-- EX: When we are multiple people writing on same page with independent data.
+- EX: Hire intern, assign task which is cheap and faster.
 
 # Concurrency vs Parallelism
 Concurrency is the ability of a program to execute multiple tasks simultaneously, while parallelism is the ability to execute multiple tasks in parallel.
@@ -460,6 +460,7 @@ Concurrency is the ability of a program to execute multiple tasks simultaneously
     - Definition: Doing many things at once (not necessarily simultaneously), by switching between tasks.
     - Example in Go: Using goroutines to handle multiple tasks concurrently.
     - Goal: Structure a program to deal with many tasks at once (e.g., handling many requests).
+    - EX: safe making 3 dish by switching
     - CPU Cores: Can work on a single core by context switching.
         ```bash
             go task1()
@@ -471,6 +472,7 @@ Concurrency is the ability of a program to execute multiple tasks simultaneously
     - Definition: Doing many things at the same time, simultaneously on multiple cores.
     - Example in Go: Running multiple goroutines that get scheduled on multiple OS threads/cores.
     - Goal: Speed up execution by splitting tasks across cores.
+    - EX: safe making 3 dish at a timr
     - CPU Cores: Requires multiple cores.
         ```bash
             runtime.GOMAXPROCS(2) // Use 2 cores
@@ -488,6 +490,7 @@ Go doesn’t expose threads directly to you. Instead, you use goroutines (which 
 
 - A channel is a typed conduit through which you can send and receive values of a type.
 - The channel type is defined as:
+- As a pipe one go routing will send at one point and second one will receive at second point.
 
 ```go
 type ChannelType chan ValueType
@@ -533,6 +536,8 @@ A variadic function in Go is a function that can accept a variable number of arg
 Variadic functions provide flexibility by allowing you to pass zero, one, or multiple 
 arguments of the same type to the function.
 
+EX: In Pizza topping, in regular pizza if i want panner topping we can add if some one want to add multiple things like capsicum, paneer and so on it will also take.
+
 ```
 package main
 
@@ -561,6 +566,8 @@ functions and types that work with different data types while maintaining type s
 Generics eliminate the need for duplicating code for different types or using interface{} 
 (which sacrifices type safety).
 
+EX: If we have one box, if int is there it will use int and if float is there it will take float.
+
 ```cgo
 package main
 
@@ -585,6 +592,8 @@ func main() {
 
 Type assertion in Go is a way to retrieve the underlying concrete value from an interface{} type.
 It is used when working with interfaces to extract the actual type stored in the interface.
+
+EX: when a magic box is there, and some gifts are there but we are not aware about what are the gifts.So getting exact gift is example of type assertion.
 
 ```bash
 value, ok := interfaceValue.(TargetType)
@@ -624,6 +633,8 @@ transform, or analyze text-based data.
 A race condition in Golang occurs when two or more goroutines access the same shared
 resource (such as a variable) concurrently, and at least one of them modifies it,
 leading to unpredictable behavior.
+
+EX: When we are multiple people writing on same page with independent data without talking to each other.
 
 # sync.WaitGroup
 
@@ -684,6 +695,7 @@ a combination of stack allocation, heap allocation, and garbage collection.
 - Standalone blocks of code that are not associated with any type.
 - Functions are defined using the `func` keyword.
 - Can be called independently.
+- Ex: a public diary which can be acces by anyone
 
     ```bash
     func Add(a int, b int) int {
@@ -697,6 +709,7 @@ a combination of stack allocation, heap allocation, and garbage collection.
 - Methods are functions that are associated with a specific type(can be struct or any user-defined type).
 - Declared with a receiver (value or pointer) between the func keyword and the method name.
 - Can be called on an instance of that type.
+- Ex: a private diary or private repo, which can be accessed by receiver type.
 
     ```bash
     type Calculator struct{}
@@ -739,6 +752,7 @@ A closure in Go is a function that captures variables from its surrounding scope
 
 - Closures are functions that can access variables from their outer scope.
 - They are created when a function is defined inside another function.
+- Ex: there is shopping bag, and shop multiple things, we are not aware whatever the thing we shop but our bag is aware about all our shop.
 
     ```bash
         func main() {
