@@ -138,6 +138,7 @@ arrays and slices are both used to store sequences of elements, but they have ke
     -   A pointer to the underlying array
     -   A length (number of elements)
     -   A capacity (max before realloc)
+    -   EX: Pizza topping, select small pizza they will allow one or 2 that is array but if we select regular they will provide multiple option which is example of slice.
 
     ```bash
             package main
