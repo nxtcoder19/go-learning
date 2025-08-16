@@ -402,6 +402,8 @@ A Context value can be used to control the behavior of operations, such
 as timeouts, cancellations, and passing values between functions without
 explicitly passing them as function parameters.
 
+EX: for signal interuption, cancellation, broadcasting
+
 # describe below struct:
 
     type Manager struct {
