@@ -92,6 +92,7 @@ It imports the package solely for its side effects, specifically to execute the 
 - Registering drivers or plugins (common in database/sql, image processing, etc.)
 - Running initialization code from the imported package.
 - Avoiding "imported and not used" compile-time error when you just want side effects.
+- EX: call a person to decoration, and they are doing their work without talking to anyone.
 
 # Zero value
 
