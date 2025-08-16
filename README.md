@@ -178,6 +178,7 @@ In Go, recover() is used to handle panics gracefully and prevent your program fr
 - recover() is a built-in function in Go that allows you to handle panics.
 - panic() is used when something goes unexpectedly wrong (like an unrecoverable error).
 - recover() only works inside a deferred function.
+- EX: In payment transactgion: if transaction failed, we will handle using recovery so that other thing will proceed.
 
     ```bash
     func mayPanic() {
