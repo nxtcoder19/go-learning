@@ -56,6 +56,7 @@ In Go (Golang), the init function is a special function that gets executed autom
 
 - Each package can have multiple init functions, even in the same file.
 - The init functions run after all global variables are initialized, but before main() is called.
+- EX: In hotel room all ac , washroom is alreadu initiated.
 
     ```bash
     package main
